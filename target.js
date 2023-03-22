@@ -22,7 +22,7 @@ class Target
 
 
   chose_color(){
-    const milk = [44, 47,50, 51];
+    const milk = [37,38,39,40,41,42,44, 47,50, 51];
     //Frutas -> Verde
     if(this.id < 28){
       return color(0,200,0);
@@ -31,7 +31,8 @@ class Target
     else if (this.id > 27 && this.id < 35 || this.id == 36) {
       return color(0,0,255);
     }
-    else if (this.id > 36 && this.id < 43 || include(milk, this.id)){
+    //Milk
+    else if (milk.includes(this.id)){
       return color(100,100,100);
     }
 
