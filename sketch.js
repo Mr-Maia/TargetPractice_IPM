@@ -142,8 +142,13 @@ function mousePressed()
       if (targets[i].clicked(mouseX, mouseY)) 
       {
         // Checks if it was the correct target
+        var audio = new Audio('POP_Sound.mp3');
+        audio.play();
         if (targets[i].id === trials[current_trial]) hits++;
-        else misses++;
+        else {misses++;
+          var donald = new Audio('Donald.mp3');
+          donald.play();
+        }
         
         current_trial++;              // Move on to the next trial/target
         break;
