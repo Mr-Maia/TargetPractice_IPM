@@ -190,7 +190,10 @@ function continueTest()
   continue_button.remove();
   
   // Shows the targets again
-  draw_targets = true; 
+  draw_targets = true;
+
+
+
 }
 
 // Creates and positions the UI targets

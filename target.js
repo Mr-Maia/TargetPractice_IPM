@@ -22,7 +22,7 @@ class Target
 
 
   chose_color(){
-    const apple = [0,1,2,3,4, 26];
+    const apple = [0,1,2,3,4, 26,73,75];
     const yellowReminderFruits = [6,8,9,23];
     const orangeFruits = [15,16,27];
     const pearFruits = [20,21,22];
@@ -33,7 +33,7 @@ class Target
     const juice = [28,29,30,31,32,33,34,36];
     const purpleRedReminderFruits = [18,24,25];
     const pepper = [68,69,70,71];
-    const potato = [64,72,73,74];
+    const potato = [64,74];
     const tomato = [76,77,78];
 
     // BUBIDAS -> Azul
@@ -123,14 +123,17 @@ class Target
     else if(this.id == 65){
         return color(152,217,142);
     }
+    else if(this.id == 72){
+        return color(255,255,255);
+    }
     return color(205,0,0);
   }
 
 
 
   label_color(){
-      const pretos = [6,8,9,23,67];
-      if(this.id == 67 || pretos.includes(this.id)){return color(0,0,0)}
+      const pretos = [6,7,8,9,10,17,19,23,35,37,38,39,40,41,42,44,47,50,51,58,60,63,65,67,72];
+      if(pretos.includes(this.id)){return color(0,0,0)}
       else return color(255,255,255);
   }
 
@@ -141,7 +144,7 @@ class Target
     circle(this.x, this.y, this.width);
 
     // Draw label
-    textFont("Arial", 12);
+    textFont("ExtraBold 800", 15);
     fill(this.label_color());
     textAlign(CENTER);
     text(this.label, this.x, this.y);

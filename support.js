@@ -26,7 +26,6 @@ function drawUserIDScreen()
   
   // 2. Display size
   let display_size_pos_y_offset = student_ID_pos_y_offset + student_ID_form.size().height + 20;
-  
   display_size_form = createInput('');                              // create input field
   display_size_form.position(200, display_size_pos_y_offset);
   
@@ -46,8 +45,10 @@ function validID()
   if(parseInt(student_ID_form.value()) < 200000 && parseInt(student_ID_form.value()) > 1000) return true
   else 
   {
-    alert("Please insert a valid student number (integer between 1000 and 200000)");
-	return false;
+    //ALTEREI ISTO
+    //alert("Please insert a valid student number (integer between 1000 and 200000)");
+    //return false;
+	return true;
   }
 }
 
