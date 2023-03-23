@@ -22,7 +22,7 @@ class Target
 
 
   chose_color(){
-    const apple = [0,1,2,3,4];
+    const apple = [0,1,2,3,4, 26];
     const yellowReminderFruits = [6,8,9,23];
     const orangeFruits = [15,16,27];
     const pearFruits = [20,21,22];
@@ -31,7 +31,7 @@ class Target
     const ghurt = [43, 48, 49, 52, 53, 54, 55, 56, 57];
     const cream = [45,46];
     const juice = [28,29,30,31,32,33,34,36];
-    const purpleRedReminderFruits = [18,24,25,26];
+    const purpleRedReminderFruits = [18,24,25];
     const pepper = [68,69,70,71];
     const potato = [64,72,73,74];
     const tomato = [76,77,78];
@@ -85,7 +85,7 @@ class Target
       return color(220,180,180);
     }
     else if (yellowReminderFruits.includes(this.id)){
-       return color(205,205,0);
+       return color(255,255,0);
     }
     else if(this.id == 58 || this.id == 60){
        return color(0,200,0);
@@ -118,7 +118,7 @@ class Target
         return color(119,103,84);
     }
     else if(this.id == 67){
-        return color(72,65,43);
+        return color(255,255,0);
     }
     else if(this.id == 65){
         return color(152,217,142);
@@ -126,6 +126,13 @@ class Target
     return color(205,0,0);
   }
 
+
+
+  label_color(){
+      const pretos = [6,8,9,23,67];
+      if(this.id == 67 || pretos.includes(this.id)){return color(0,0,0)}
+      else return color(255,255,255);
+  }
 
   draw()
   {
@@ -135,7 +142,7 @@ class Target
 
     // Draw label
     textFont("Arial", 12);
-    fill(color(255,255,255));
+    fill(this.label_color());
     textAlign(CENTER);
     text(this.label, this.x, this.y);
   }
