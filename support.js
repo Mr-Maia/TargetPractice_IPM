@@ -12,32 +12,56 @@ function drawUserIDScreen()
   main_text = createDiv("Insert your student number and display size");
   main_text.id('main_text');
   main_text.position(10, 10);
-  
+
+  // Attention text
+  attention_text = createDiv("Atenção!");
+  attention_text.id('attention_text');
+  attention_text.position(10, 200);
+
+  advice1_text = createDiv("Lembrem-se das cores dos alimentos. i.e: Cenoura é laranja logo não vale a pena procurar por outras cores!");
+  advice1_text.id('advice1_text');
+  advice1_text.position(10, 220);
+
+  advice2_text = createDiv("Os alimentos estão separados por grupos, cada grupo tem uma cor. Um grupo pode ser formado por alimentos de palavras");
+  advice2_text.id('advice2_text');
+  advice2_text.position(10, 240);
+
+  advice3_text = createDiv("semelhantes, i.e: Oat Milk e Fat Milk ou Yoghurt e Vanilla Yoghurt, etc");
+  advice3_text.id('advice3_text');
+  advice3_text.position(10, 260);
+
+
+
+
   // Input forms:
   // 1. Student ID
-  let student_ID_pos_y_offset = main_text.size().height + 40;         // y offset from previous item
-  
+  let student_ID_pos_y_offset = main_text.size().height + 70;         // y offset from previous item
+
   student_ID_form = createInput('');                                 // create input field
   student_ID_form.position(200, student_ID_pos_y_offset);
-  
+
   student_ID_label = createDiv("Student number (int)");              // create label
   student_ID_label.id('input');
   student_ID_label.position(10, student_ID_pos_y_offset);
-  
+
   // 2. Display size
   let display_size_pos_y_offset = student_ID_pos_y_offset + student_ID_form.size().height + 20;
   display_size_form = createInput('');                              // create input field
   display_size_form.position(200, display_size_pos_y_offset);
-  
+
   display_size_label = createDiv("Display size in inches");         // create label
   display_size_label.id('input');
   display_size_label.position(10, display_size_pos_y_offset);
-  
+
   // 3. Start button
   start_button = createButton('START');
   start_button.mouseReleased(startTest);
-  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2);
+  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2 +60);
 }
+
+
+
+
 
 // Verifies if the student ID is a number, and within an acceptable range
 function validID()
@@ -74,6 +98,10 @@ function startTest()
 
     // Deletes UI elements
     main_text.remove();
+    attention_text.remove();
+    advice1_text.remove();
+    advice2_text.remove();
+    advice3_text.remove();
     student_ID_form.remove();
     student_ID_label.remove();
     display_size_form.remove();

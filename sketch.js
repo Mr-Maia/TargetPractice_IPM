@@ -48,6 +48,7 @@ function setup()
   drawUserIDScreen();        // draws the user start-up screen (student ID and display size)
 }
 
+
 // Runs every frame and redraws the screen
 function draw()
 {
