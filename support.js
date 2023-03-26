@@ -1,7 +1,7 @@
 // Support variables & functions (DO NOT CHANGE!)
 
 let student_ID_form, display_size_form, start_button;                  // Initial input variables
-let student_ID, display_size;                                          // User input parameters
+let student_ID, display_size, flag = 0;                                        // User input parameters
 
 // Prints the initial UI that prompts that ask for student ID and screen size
 function drawUserIDScreen()
@@ -53,12 +53,15 @@ function drawUserIDScreen()
   display_size_label.id('input');
   display_size_label.position(10, display_size_pos_y_offset);
 
+  ok_button = createButton('OK');
+  ok_button.mouseReleased(okChecked);
+  ok_button.position(width/2 - ok_button.size().width/2,290);
+
   // 3. Start button
   start_button = createButton('START');
   start_button.mouseReleased(startTest);
-  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2 +60);
+  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2 +80);
 }
-
 
 
 
@@ -87,10 +90,15 @@ function validSize()
   }
 }
 
+
+function okChecked(){
+    flag = 1;
+}
+
 // Starts the test (i.e., target selection task)
 function startTest()
 {
-  if (validID() && validSize())
+  if (validID() && validSize() && flag == 1)
   {
     // Saves student and display information
     student_ID = parseInt(student_ID_form.value());
@@ -106,11 +114,17 @@ function startTest()
     student_ID_label.remove();
     display_size_form.remove();
     display_size_label.remove();
-    start_button.remove();  
+    start_button.remove();
+    ok_button.remove();
 
     // Goes fullscreen and starts test
     fullscreen(!fullscreen());
   }
+  else
+    {
+      alert("Tens que carregar em OK!");
+      return false;
+    }
 }
 
 // Randomize the order in the targets to be selected
