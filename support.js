@@ -75,7 +75,7 @@ function validID()
     //ALTEREI ISTO
     //alert("Please insert a valid student number (integer between 1000 and 200000)");
     //return false;
-	return true;
+	return true; //apagar esta linha e descomentar as de cima.
   }
 }
 
@@ -122,7 +122,7 @@ function startTest()
   }
   else
     {
-      alert("Tens que carregar em OK!");
+      alert("Tens de ler e depois carregar em OK!");
       return false;
     }
 }
