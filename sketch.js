@@ -198,14 +198,28 @@ function continueTest()
 
 }
 
-// Creates and positions the UI targets
 function createTargets(target_size, horizontal_gap, vertical_gap)
 {
-  // Define the margins between targets by dividing the white space 
+  let frutas = legendas.getArray().slice(0, 28);
+  let liquidos = legendas.getArray().slice(28, 37);
+  let brancos = legendas.getArray().slice(37, 58);
+  let vegetais = legendas.getArray().slice(58, 80);
+
+  // Sort the legendas_aux array by the first element of each subtitle string
+  frutas.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  liquidos.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  brancos.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  vegetais.sort((a, b) => a[0] > b[0] ? 1 : -1);
+
+
+  let listas = [].concat(frutas, liquidos, brancos, vegetais);
+
+
+  // Define the margins between targets by dividing the white space
   // for the number of targets minus one
   h_margin = horizontal_gap / (GRID_COLUMNS -1);
   v_margin = vertical_gap / (GRID_ROWS - 1);
-  
+
   // Set targets in a 8 x 10 grid
   for (var r = 0; r < GRID_ROWS; r++)
   {
@@ -213,15 +227,15 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
     {
       let target_x = 40 + (h_margin + target_size) * c + target_size/2;        // give it some margin from the left border
       let target_y = (v_margin + target_size) * r + target_size/2;
-      
+
       // Find the appropriate label and ID for this target
       let legendas_index = c + GRID_COLUMNS * r;
-      let target_label = legendas.getString(legendas_index, 0);
-      let target_id = legendas.getNum(legendas_index, 1);     
-      
+      let target_label = listas[legendas_index][0];
+      let target_id = listas[legendas_index][1];
+
       let target = new Target(target_x, target_y + 40, target_size, target_label, target_id);
       targets.push(target);
-    }  
+    }
   }
 }
 
