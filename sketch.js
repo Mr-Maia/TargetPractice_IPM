@@ -256,8 +256,8 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
 
       // Find the appropriate label and ID for this target
       let legendas_index = c + GRID_COLUMNS * r;
-      let target_label = listas.getString(legendas_index,0);
-      let target_id = listas.getNum(legendas_index,1);
+      let target_label = listas[legendas_index][0];
+      let target_id = listas[legendas_index][1];
 
       let target = new Target(target_x, target_y + 40, target_size, target_label, target_id);
       targets.push(target);
