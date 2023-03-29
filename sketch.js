@@ -200,19 +200,44 @@ function continueTest()
 
 function createTargets(target_size, horizontal_gap, vertical_gap)
 {
-  let frutas = legendas.getArray().slice(0, 28);
-  let liquidos = legendas.getArray().slice(28, 37);
-  let brancos = legendas.getArray().slice(37, 58);
-  let vegetais = legendas.getArray().slice(58, 80);
+  let apples = legendas.getArray().slice(0,6);
+  let frutas1 = legendas.getArray().slice(6, 11);
+  let melons = legendas.getArray().slice(11, 15);
+  let frutas2 = legendas.getArray().slice(15, 28);
+  let juices = legendas.getArray().slice(28, 37);
+  let milk1 = legendas.getArray().slice(37, 43);
+  let milk2 = legendas.getArray().slice(44,45);
+  let milk4 = legendas.getArray().slice(47,48);
+  let milk3 = legendas.gerArray().slice(50,52);
+  let yoghurt1 = legendas.getArray().slice(43,44);
+  let yoghurt2 = legendas.getArray().slice(48,50);
+  let yoghurt3 = legendas.getArray().slice(52,58);
+  let cream = legendas.getArray().slice(45,47);
+  let pepper = legendas.getArray().slice(68,72);
+  let potato = legendas.getArray().slice(72,75);
+  let tomato = legendas.getArray().slice(76,79);
+  let vegetais1 = legendas.getArray().slice(58, 68);
+  let vegetais2 = legendas.getArray().slice(75,76);
+  let vegetais3 = legendas.getArray().slice(79);
 
+  let frutasLists = [].concat(frutas1, frutas2);
+  let milkLists = [].concat(milk1, milk2, milk3, milk4);
+  let yoghurtLists = [].concat(yoghurt1, yoghurt2, yoghurt3);
+  let vegetaisLists = [].concat(vegetais1, vegetais2, vegetais3);
   // Sort the legendas_aux array by the first element of each subtitle string
-  frutas.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  liquidos.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  brancos.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  vegetais.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  apples.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  frutasLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  melons.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  juices.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  pepper.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  potato.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  tomato.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  cream.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  milkLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  vegetaisLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
 
 
-  let listas = [].concat(frutas, liquidos, brancos, vegetais);
+  let listas = [].concat(apples, frutasLists, melons, juices, milkLists, cream, potato, pepper, tomato, vegetaisLists);
 
 
   // Define the margins between targets by dividing the white space
