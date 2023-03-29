@@ -18,7 +18,7 @@ function drawUserIDScreen()
   attention_text.id('attention_text');
   attention_text.position(10, 200);
 
-  advice1_text = createDiv("Lembrem-se das cores dos alimentos. i.e: Cenoura é laranja logo não vale a pena procurar por outras cores!");
+  advice1_text = createDiv("Lembrem-se das cores dos alimentos. i.e: Cenoura é laranja, logo não vale a pena procurar por outras cores!");
   advice1_text.id('advice1_text');
   advice1_text.position(10, 220);
 
@@ -53,7 +53,7 @@ function drawUserIDScreen()
   display_size_label.id('input');
   display_size_label.position(10, display_size_pos_y_offset);
 
-  ok_button = createButton('OK');
+  ok_button = createButton('JÁ LESTE?');
   ok_button.mouseReleased(okChecked);
   ok_button.position(width/2 - ok_button.size().width/2,290);
 
@@ -93,6 +93,21 @@ function validSize()
 
 function okChecked(){
     flag = 1;
+    ok_button.remove();
+    ok_button2 = createButton('JÁ LI');
+    ok_button2.position(width/2 - ok_button2.size().width/2,290);
+
+}
+
+function validOk(){
+    if(flag == 1){
+        return true;
+    }
+    else
+    {
+        alert("Tens que confirmar que já leste!");
+        return false;
+    }
 }
 
 // Starts the test (i.e., target selection task)
@@ -115,16 +130,17 @@ function startTest()
     display_size_form.remove();
     display_size_label.remove();
     start_button.remove();
-    ok_button.remove();
+    ok_button2.remove();
 
     // Goes fullscreen and starts test
     fullscreen(!fullscreen());
   }
   else
-    {
-      alert("Tens que carregar em OK!");
-      return false;
-    }
+  {
+    alert("Tens que confirmar que já leste!");
+    return false;
+  }
+
 }
 
 // Randomize the order in the targets to be selected

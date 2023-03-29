@@ -17,6 +17,7 @@ const GRID_COLUMNS        = 10;     // We divide our 80 targets in a 8x10 grid
 let continue_button;
 let legendas;                       // The item list from the "legendas" CSV
 
+
 // Metrics
 let testStartTime, testEndTime;     // time between the start and end of one attempt (8 trials)
 let hits 			      = 0;      // number of successful selections
