@@ -200,25 +200,26 @@ function continueTest()
 
 function createTargets(target_size, horizontal_gap, vertical_gap)
 {
-  let apples = legendas.getArray().slice(0,6);
-  let frutas1 = legendas.getArray().slice(6, 11);
-  let melons = legendas.getArray().slice(11, 15);
-  let frutas2 = legendas.getArray().slice(15, 28);
-  let juices = legendas.getArray().slice(28, 37);
-  let milk1 = legendas.getArray().slice(37, 43);
-  let milk2 = legendas.getArray().slice(44,45);
-  let milk4 = legendas.getArray().slice(47,48);
-  let milk3 = legendas.gerArray().slice(50,52);
-  let yoghurt1 = legendas.getArray().slice(43,44);
-  let yoghurt2 = legendas.getArray().slice(48,50);
-  let yoghurt3 = legendas.getArray().slice(52,58);
-  let cream = legendas.getArray().slice(45,47);
-  let pepper = legendas.getArray().slice(68,72);
-  let potato = legendas.getArray().slice(72,75);
-  let tomato = legendas.getArray().slice(76,79);
-  let vegetais1 = legendas.getArray().slice(58, 68);
-  let vegetais2 = legendas.getArray().slice(75,76);
-  let vegetais3 = legendas.getArray().slice(79);
+  let legendasArray = legendas.getArray();
+  let apples = legendasArray.slice(0,6);
+  let frutas1 = legendasArray.slice(6, 11);
+  let melons = legendasArray.slice(11, 15);
+  let frutas2 = legendasArray.slice(15, 28);
+  let juices = legendasArray.slice(28, 37);
+  let milk1 = legendasArray.slice(37, 43);
+  let milk2 = legendasArray.slice(44,45);
+  let milk4 = legendasArray.slice(47,48);
+  let milk3 = legendasArray.slice(50,52);
+  let yoghurt1 = legendasArray.slice(43,44);
+  let yoghurt2 = legendasArray.slice(48,50);
+  let yoghurt3 = legendasArray.slice(52,58);
+  let cream = legendasArray.slice(45,47);
+  let pepper = legendasArray.slice(68,72);
+  let potato = legendasArray.slice(72,75);
+  let tomato = legendasArray.slice(76,79);
+  let vegetais1 = legendasArray.slice(58, 68);
+  let vegetais2 = legendasArray.slice(75,76);
+  let vegetais3 = legendasArray.slice(79,80);
 
   let frutasLists = [].concat(frutas1, frutas2);
   let milkLists = [].concat(milk1, milk2, milk3, milk4);
@@ -235,10 +236,10 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
   cream.sort((a, b) => a[0] > b[0] ? 1 : -1);
   milkLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
   vegetaisLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  yoghurtLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
 
 
-  let listas = [].concat(apples, frutasLists, melons, juices, milkLists, cream, potato, pepper, tomato, vegetaisLists);
-
+  let listas = [].concat(apples, frutasLists, melons, juices, milkLists, yoghurtLists, cream, potato, pepper, tomato, vegetaisLists);
 
   // Define the margins between targets by dividing the white space
   // for the number of targets minus one
@@ -255,8 +256,8 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
 
       // Find the appropriate label and ID for this target
       let legendas_index = c + GRID_COLUMNS * r;
-      let target_label = listas[legendas_index][0];
-      let target_id = listas[legendas_index][1];
+      let target_label = listas.getString(legendas_index,0);
+      let target_id = listas.getNum(legendas_index,1);
 
       let target = new Target(target_x, target_y + 40, target_size, target_label, target_id);
       targets.push(target);
