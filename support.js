@@ -18,22 +18,17 @@ function drawUserIDScreen()
   attention_text.id('attention_text');
   attention_text.position(10, 200);
 
-  advice1_text = createDiv("Lembrem-se das cores dos alimentos. i.e: Cenoura é laranja, logo não vale a pena procurar por outras cores!");
+  advice1_text = createDiv("Os alimentos têm as suas cores reais");
   advice1_text.id('advice1_text');
   advice1_text.position(10, 220);
 
-  advice2_text = createDiv("Os alimentos estão separados por grupos, cada grupo tem uma cor. Um grupo pode ser formado por alimentos de palavras");
+  advice2_text = createDiv("Estes estão separados por grupos e por ordem alfabética dentro dos grupos.");
   advice2_text.id('advice2_text');
   advice2_text.position(10, 240);
 
-  advice3_text = createDiv("semelhantes, i.e: Oat Milk e Fat Milk ou Yoghurt e Vanilla Yoghurt, etc");
+  advice3_text = createDiv("Por favor, usa a primeira tentativa para aprender o esquema");
   advice3_text.id('advice3_text');
   advice3_text.position(10, 260);
-
-  advice4_text = createDiv("Dentro de cada grupo, os targets estão ordenados alfabeticamente");
-  advice4_text.id('advice4_text');
-  advice4_text.position(10, 280);
-
 
 
 
@@ -128,7 +123,6 @@ function startTest()
     advice1_text.remove();
     advice2_text.remove();
     advice3_text.remove();
-    advice4_text.remove();
     student_ID_form.remove();
     student_ID_label.remove();
     display_size_form.remove();
