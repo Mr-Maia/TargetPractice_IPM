@@ -35,19 +35,10 @@ class Target
         const colorCream = color(231,141,130);
         const colorPotato = color(183, 146, 104);
         const colorPepper = color(187, 17, 42);
-        const colorTomato = color(216, 50, 0);
         const berinjela = color(105,59,88);
-        const kiwiColor = color(122,150,15);
-        const mangoColor = color(255,205,72);
-        const papayaColor = color(255,194,129);
-        const purple = color(134,70,101);
-        const peachColor = color(239,113,70);
-        const pearColor = color(209,226,49);
         const yoghurtColor = color(225, 175, 183);
         const lightGreen = color(0,180,0);
         const garlicColor = color(242,244,210);
-        const mushroomColor = color(216,204,192);
-        const redBeetColor = color(122,31,61);
         const pink = color(255,0,255);
         const gold = color(255,215,0)
 
@@ -56,7 +47,7 @@ class Target
         if ([7,23,24,25,60,71,72,75,76].includes(index)) return red;
         if ([2,10,11,19,78].includes(index)) return yellow;
         if ([14,18,15,26,63].includes(index)) return orange;
-        if ([28,29,30,31,32,33,34,35,36].includes(index)) return colorJuices;
+        if ([28,29,30,31,32,33,34,35].includes(index)) return colorJuices;
         if ([36].includes(index)) return smoothie;
         if ([37,38,39,40,41,42,43,44,45,46,77].includes(index)) return white;
         if ([47,48,49,50,51,52,53,54,55].includes(index)) return yoghurtColor;
@@ -69,15 +60,6 @@ class Target
         if ([20].includes(index)) return pink;
         if ([6].includes(index)) return gold;
         if ([5,13,27].includes(index)) return lightGreen;
-        //if ([].includes(index)) return kiwiColor;
-        //if ([].includes(index)) return mangoColor;
-        //if ([].includes(index)) return papayaColor;
-        //if ([].includes(index)) return peachColor;
-        //if ([].includes(index)) return pearColor;
-        //if ([].includes(index)) return redBeetColor;
-        //if ([].includes(index)) return colorTomato;
-        //if ([].includes(index)) return mushroomColor;
-        //if ([].includes(index)) return purple;
 
         // Default color if not found in any group
         return color(100, 100, 100);
