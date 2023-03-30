@@ -8,6 +8,7 @@ class Target
     this.width  = w;
     this.label  = l;
     this.id     = id;
+
   }
 
   // Checks if a mouse click took place
@@ -21,134 +22,88 @@ class Target
   // and its label
 
 
-  chose_color(){
-    const apple = [0,1,2,3,4, 26,73,75];
-    const yellowReminderFruits = [6,8,9,23];
-    const orangeFruits = [15,16,27];
-    const pearFruits = [20,21,22];
-    const melon = [11,12,13,14];
-    const milk = [37,38,39,40,41,42,44, 47,50, 51];
-    const ghurt = [43, 48, 49, 52, 53, 54, 55, 56, 57];
-    const cream = [45,46];
-    const juice = [28,29,30,31,32,33,34,36];
-    const purpleRedReminderFruits = [18,24,25];
-    const pepper = [68,69,70,71];
-    const potato = [64,74];
-    const tomato = [76,77,78];
+chose_color() {
+   // Define a color for each group
+   const red = color(255, 0, 0);
+   const yellow = color(255,255,0);
+   const orange = color(255,127,0);
+   const green = color(85, 178, 78);
+   const darkGreen = color(0,90,0);
+   const smoothie = color(255,136,171);
+   const white = color(255,255,255);
+   const colorJuices = color(115,157,250);
+   const colorCream = color(231,141,130);
+   const colorPotato = color(183, 146, 104);
+   const colorPepper = color(187, 17, 42);
+   const colorTomato = color(216, 50, 0);
+   const berinjela = color(105,59,88);
+   const kiwiColor = color(122,150,15);
+   const mangoColor = color(255,205,72);
+   const papayaColor = color(255,194,129);
+   const purple = color(134,70,101);
+   const peachColor = color(239,113,70);
+   const pearColor = color(209,226,49);
+   const yoghurtColor = color(225, 175, 183);
+   const lightGreen = color(115,215,70);
+   const garlicColor = color(242,244,210);
+   const mushroomColor = color(216,204,192);
+   const redBeetColor = color(122,31,61);
 
-    // BUBIDAS -> Azul
+   const index = listas.findIndex(item => item[1] === this.id);
 
-    if(apple.includes(this.id)){
-        return color(255,0,0);
-    }
-    else if(orangeFruits.includes(this.id)){
-        return color(255,165,0);
-    }
-    else if(pearFruits.includes(this.id)){
-        return color(0,150,0);
-    }
-    else if(this.id == 10){
-        return color(255,205,72);
-    }
-    else if(this.id == 19){
-        return color(255,194,164);
-    }
-    else if(this.id == 7){
-        return color(142,229,63);
-    }
-    else if(this.id == 17){
-        return color(255,194,129);
-    }
-    else if(this.id == 5){
-        return color(86,130,3);
-    }
-    else if(cream.includes(this.id)){
-        return color(200,150,180);
-    }
-    else if(melon.includes(this.id)){
-         return color (0,100,0);
-    }
-    else if (juice.includes(this.id)) {
-      return color(199,130,107);
-    }
-    else if(ghurt.includes(this.id)){
-        return color(77, 37, 53);
-    }
-    else if(this.id == 35){
-        return color(255,192,203);
-    }
-    else if(purpleRedReminderFruits.includes(this.id)){
-        return color(149,53,83);
-    }
-    //Milk
-    else if (milk.includes(this.id)){
-      return color(220,180,180);
-    }
-    else if (yellowReminderFruits.includes(this.id)){
-       return color(255,255,0);
-    }
-    else if(this.id == 58 || this.id == 60){
-       return color(0,200,0);
-    }
-    else if(this.id == 59){
-        return color(48,25,52);
-    }
-    else if(this.id == 62 || this.id == 79){
-        return color(0,100,0);
-    }
-    else if(this.id == 61){
-        return color(235,137,33);
-    }
-    else if(this.id == 63){
-        return color(205,193,169);
-    }
-    else if(pepper.includes(this.id)){
-        return color(187,17,42);
-    }
-    else if(potato.includes(this.id)){
-        return color(183,146,104);
-    }
-    else if(tomato.includes(this.id)){
-        return color(255,99,71);
-    }
-    else if(this.id == 75){
-        return color(122,31,61);
-    }
-    else if(this.id == 66){
-        return color(119,103,84);
-    }
-    else if(this.id == 67){
-        return color(255,255,0);
-    }
-    else if(this.id == 65){
-        return color(152,217,142);
-    }
-    else if(this.id == 72){
-        return color(255,255,255);
-    }
-    return color(205,0,0);
-  }
+   if ((index >= 0 && index <= 4) || index == 22) return red;
+   if (index ==  7 || index ==  11|| index ==  12 ||index == 19 || index == 78) return yellow;
+   if (index == 10) return kiwiColor;
+   if (index == 13) return mangoColor;
+   if (index >= 24 && index <= 27 || index == 79 || index == 72) return darkGreen;
+   if ((index >= 14 && index <= 15) || index == 23 || index == 71) return orange;
+   if (index == 16) return papayaColor;
+   if (index == 17 || (index >= 20 && index <= 21)) return purple;
+   if (index == 18) return peachColor;
+   if (index >= 8 && index <= 9 || index == 5) return pearColor;
+   if (index >= 28 && index <= 35) return colorJuices;
+   if (index == 36) return smoothie;
+   if (index >= 37 && index <= 46) return white;
+   if (index >= 47 && index <= 55) return yoghurtColor;
+   if (index >= 56 && index <= 57) return colorCream;
+   if (index == 70 || index == 68 || index == 6 || index == 75) return lightGreen;
+   if (index == 69) return berinjela;
+   if (index == 73) return garlicColor;
+   if (index == 74 || (index >= 58 && index <= 60)) return colorPotato;
+   if (index == 76) return mushroomColor;
+   if (index >= 61 && index <= 64) return colorPepper;
+   if (index == 77) return redBeetColor;
+   if (index >= 65 && index <= 67) return colorTomato;
+   if (index == 79) return darkGreen;
 
-
+   // Default color if not found in any group
+   return color(255, 255, 255);
+ }
 
   label_color(){
-      const pretos = [6,7,8,9,10,17,19,23,35,37,38,39,40,41,42,44,47,50,51,58,60,63,65,67,72];
-      if(pretos.includes(this.id)){return color(0,0,0)}
+      const index = listas.findIndex(item => item[1] === this.id);
+      const pretos = [5,6,7,8,9,11,12,13,16,19,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,68,70,73,75,76,78];
+      if(pretos.includes(index)){return color(0,0,0)}
       else return color(255,255,255);
   }
 
-  draw()
-  {
-    // Draw target
-    fill(color(this.chose_color()));
-    circle(this.x, this.y, this.width);
 
-    // Draw label
-    textFont("ExtraBold 800", 15);
-    fill(this.label_color());
-    textAlign(CENTER);
-    text(this.label, this.x, this.y);
+  draw() {
+      // Draw target
+      fill(color(this.chose_color()));
+      circle(this.x, this.y, this.width);
+
+      // Draw the big first letter
+      textSize(35); // Increase the font size to a larger value
+      fill(this.label_color());
+      textAlign(CENTER, CENTER);
+      strokeWeight(2); // Increase stroke weight to make the text look bolder
+      text(this.label.charAt(0), this.x, this.y - 10); // Adjust the position to be closer to the center of the circle
+      strokeWeight(1); // Reset the stroke weight to the default value
+
+      // Draw the full label below the big first letter
+      textSize(12.5); // Change the font size back to the original value
+      textAlign(CENTER, CENTER);
+      text(this.label, this.x, this.y + 20); // Adjust the position to draw the label closer to the big first letter
   }
-
-
 }

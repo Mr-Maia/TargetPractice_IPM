@@ -30,6 +30,11 @@ function drawUserIDScreen()
   advice3_text.id('advice3_text');
   advice3_text.position(10, 260);
 
+  advice4_text = createDiv("Dentro de cada grupo, os targets estão ordenados alfabeticamente");
+  advice4_text.id('advice4_text');
+  advice4_text.position(10, 280);
+
+
 
 
 
@@ -55,12 +60,12 @@ function drawUserIDScreen()
 
   ok_button = createButton('JÁ LESTE?');
   ok_button.mouseReleased(okChecked);
-  ok_button.position(width/2 - ok_button.size().width/2,290);
+  ok_button.position(width/2 - ok_button.size().width/2,310);
 
   // 3. Start button
   start_button = createButton('START');
   start_button.mouseReleased(startTest);
-  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2 +80);
+  start_button.position(width/2 - start_button.size().width/2, height/2 - start_button.size().height/2 +100);
 }
 
 
@@ -72,10 +77,8 @@ function validID()
   if(parseInt(student_ID_form.value()) < 200000 && parseInt(student_ID_form.value()) > 1000) return true
   else 
   {
-    //ALTEREI ISTO
-    //alert("Please insert a valid student number (integer between 1000 and 200000)");
-    //return false;
-	return true; //apagar esta linha e descomentar as de cima.
+      alert("Please insert a valid student number (integer between 1000 and 200000)");
+      return false;
   }
 }
 
@@ -95,7 +98,7 @@ function okChecked(){
     flag = 1;
     ok_button.remove();
     ok_button2 = createButton('JÁ LI');
-    ok_button2.position(width/2 - ok_button2.size().width/2,290);
+    ok_button2.position(width/2 - ok_button2.size().width/2,310);
 
 }
 
@@ -125,6 +128,7 @@ function startTest()
     advice1_text.remove();
     advice2_text.remove();
     advice3_text.remove();
+    advice4_text.remove();
     student_ID_form.remove();
     student_ID_label.remove();
     display_size_form.remove();
@@ -148,7 +152,7 @@ function randomizeTrials()
   trials = [];      // Empties the array
     
   // Creates an array with random items from the "legendas" CSV
-  for (var i = 0; i < NUM_OF_TRIALS; i++) trials.push(round(random(legendas.getRowCount())));
+  for (var i = 0; i < NUM_OF_TRIALS; i++) trials.push(floor(random(legendas.getRowCount())));
 
   // print("trial order: " + trials);   // prints trial order - for debug purposes
 }

@@ -16,13 +16,14 @@ const GRID_ROWS           = 8;      // We divide our 80 targets in a 8x10 grid
 const GRID_COLUMNS        = 10;     // We divide our 80 targets in a 8x10 grid
 let continue_button;
 let legendas;                       // The item list from the "legendas" CSV
+let listas;
 
 
 // Metrics
 let testStartTime, testEndTime;     // time between the start and end of one attempt (8 trials)
 let hits 			      = 0;      // number of successful selections
 let misses 			      = 0;      // number of missed selections (used to calculate accuracy)
-let database;                       // Firebase DB  
+let database;                       // Firebase DB
 
 // Study control parameters
 let draw_targets          = false;  // used to control what to show in draw()
@@ -44,7 +45,7 @@ function setup()
 {
   createCanvas(700, 500);    // window size in px before we go into fullScreen()
   frameRate(60);             // frame rate (DO NOT CHANGE!)
-  
+
   randomizeTrials();         // randomize the trial order at the start of execution
   drawUserIDScreen();        // draws the user start-up screen (student ID and display size)
 }
@@ -54,19 +55,19 @@ function setup()
 function draw()
 {
   if (draw_targets && attempt < 2)
-  {     
+  {
     // The user is interacting with the 6x3 target grid
     background(color(0,0,0));        // sets background to black
-    
+
     // Print trial count at the top left-corner of the canvas
     textFont("Arial", 16);
     fill(color(255,255,255));
     textAlign(LEFT);
     text("Trial " + (current_trial + 1) + " of " + trials.length, 50, 20);
-        
+
     // Draw all targets
 	for (var i = 0; i < legendas.getRowCount(); i++) targets[i].draw();
-    
+
     // Draw the target label to be selected in the current trial
     textFont("Arial", 20);
     textAlign(CENTER);
@@ -77,22 +78,22 @@ function draw()
 // Print and save results at the end of 54 trials
 function printAndSavePerformance()
 {
-  // DO NOT CHANGE THESE! 
+  // DO NOT CHANGE THESE!
   let accuracy			= parseFloat(hits * 100) / parseFloat(hits + misses);
   let test_time         = (testEndTime - testStartTime) / 1000;
   let time_per_target   = nf((test_time) / parseFloat(hits + misses), 0, 3);
   let penalty           = constrain((((parseFloat(95) - (parseFloat(hits * 100) / parseFloat(hits + misses))) * 0.2)), 0, 100);
   let target_w_penalty	= nf(((test_time) / parseFloat(hits + misses) + penalty), 0, 3);
   let timestamp         = day() + "/" + month() + "/" + year() + "  " + hour() + ":" + minute() + ":" + second();
-  
+
   textFont("Arial", 18);
   background(color(0,0,0));   // clears screen
   fill(color(255,255,255));   // set text fill color to white
   textAlign(LEFT);
   text(timestamp, 10, 20);    // display time on screen (top-left corner)
-  
+
   textAlign(CENTER);
-  text("Attempt " + (attempt + 1) + " out of 2 completed!", width/2, 60); 
+  text("Attempt " + (attempt + 1) + " out of 2 completed!", width/2, 60);
   text("Hits: " + hits, width/2, 100);
   text("Misses: " + misses, width/2, 120);
   text("Accuracy: " + accuracy + "%", width/2, 140);
@@ -101,7 +102,7 @@ function printAndSavePerformance()
   text("Average time for each target (+ penalty): " + target_w_penalty + "s", width/2, 220);
 
   // Saves results (DO NOT CHANGE!)
-  let attempt_data = 
+  let attempt_data =
   {
         project_from:       GROUP_NUMBER,
         assessed_by:        student_ID,
@@ -114,7 +115,7 @@ function printAndSavePerformance()
         time_per_target:    time_per_target,
         target_w_penalty:   target_w_penalty,
   }
-  
+
   // Send data to DB (DO NOT CHANGE!)
   if (RECORD_TO_FIREBASE)
   {
@@ -124,7 +125,7 @@ function printAndSavePerformance()
       firebase.initializeApp(firebaseConfig);
       database = firebase.database();
     }
-    
+
     // Add user performance results
     let db_ref = database.ref('G' + GROUP_NUMBER);
     db_ref.push(attempt_data);
@@ -132,7 +133,7 @@ function printAndSavePerformance()
 }
 
 // Mouse button was pressed - lets test to see if hit was in the correct target
-function mousePressed() 
+function mousePressed()
 {
   // Only look for mouse releases during the actual test
   // (i.e., during target selections)
@@ -141,30 +142,31 @@ function mousePressed()
     for (var i = 0; i < legendas.getRowCount(); i++)
     {
       // Check if the user clicked over one of the targets
-      if (targets[i].clicked(mouseX, mouseY)) 
+      if (targets[i].clicked(mouseX, mouseY))
       {
         // Checks if it was the correct target
         var audio = new Audio('POP_Sound.mp3');
         audio.play();
-        if (targets[i].id === trials[current_trial]) hits++;
+
+        if (targets[i].id == trials[current_trial]) hits++;
         else {misses++;
           var donald = new Audio('Donald.mp3');
           donald.play();
         }
-        
+
         current_trial++;              // Move on to the next trial/target
         break;
       }
     }
-    
+
     // Check if the user has completed all trials
     if (current_trial === NUM_OF_TRIALS)
     {
       testEndTime = millis();
       draw_targets = false;          // Stop showing targets and the user performance results
       printAndSavePerformance();     // Print the user's results on-screen and send these to the DB
-      attempt++;                      
-      
+      attempt++;
+
       // If there's an attempt to go create a button to start this
       if (attempt < 2)
       {
@@ -174,7 +176,7 @@ function mousePressed()
       }
     }
     // Check if this was the first selection in an attempt
-    else if (current_trial === 1) testStartTime = millis(); 
+    else if (current_trial === 1) testStartTime = millis();
   }
 }
 
@@ -183,14 +185,14 @@ function continueTest()
 {
   // Re-randomize the trial order
   randomizeTrials();
-  
+
   // Resets performance variables
   hits = 0;
   misses = 0;
-  
+
   current_trial = 0;
   continue_button.remove();
-  
+
   // Shows the targets again
   draw_targets = true;
 
@@ -201,8 +203,8 @@ function continueTest()
 function createTargets(target_size, horizontal_gap, vertical_gap)
 {
   let legendasArray = legendas.getArray();
-  let apples = legendasArray.slice(0,6);
-  let frutas1 = legendasArray.slice(6, 11);
+  let apples = legendasArray.slice(0,5);
+  let frutas1 = legendasArray.slice(5, 11);
   let melons = legendasArray.slice(11, 15);
   let frutas2 = legendasArray.slice(15, 28);
   let juices = legendasArray.slice(28, 37);
@@ -239,7 +241,7 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
   yoghurtLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
 
 
-  let listas = [].concat(apples, frutasLists, melons, juices, milkLists, yoghurtLists, cream, potato, pepper, tomato, vegetaisLists);
+  listas = [].concat(apples, frutasLists, melons, juices, milkLists, yoghurtLists, cream, potato, pepper, tomato, vegetaisLists);
 
   // Define the margins between targets by dividing the white space
   // for the number of targets minus one
@@ -256,6 +258,8 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
 
       // Find the appropriate label and ID for this target
       let legendas_index = c + GRID_COLUMNS * r;
+      //let target_label = listas.getString(legendas_index,0);
+      //let target_id = listas.getNum(legendas_index,1);
       let target_label = listas[legendas_index][0];
       let target_id = listas[legendas_index][1];
 

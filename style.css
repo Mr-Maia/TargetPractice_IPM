@@ -44,6 +44,13 @@ canvas
   color: white;
 }
 
+#advice4_text
+{
+  font-size: 12px;
+  font-family: 'Arial';
+  color: white;
+}
+
 #input
 {
   font-size: 14px;
