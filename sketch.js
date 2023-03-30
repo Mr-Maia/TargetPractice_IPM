@@ -203,10 +203,7 @@ function continueTest()
 function createTargets(target_size, horizontal_gap, vertical_gap)
 {
   let legendasArray = legendas.getArray();
-  let apples = legendasArray.slice(0,5);
-  let frutas1 = legendasArray.slice(5, 11);
-  let melons = legendasArray.slice(11, 15);
-  let frutas2 = legendasArray.slice(15, 28);
+  let frutas = legendasArray.slice(0,28)
   let juices = legendasArray.slice(28, 37);
   let milk1 = legendasArray.slice(37, 43);
   let milk2 = legendasArray.slice(44,45);
@@ -216,32 +213,22 @@ function createTargets(target_size, horizontal_gap, vertical_gap)
   let yoghurt2 = legendasArray.slice(48,50);
   let yoghurt3 = legendasArray.slice(52,58);
   let cream = legendasArray.slice(45,47);
-  let pepper = legendasArray.slice(68,72);
-  let potato = legendasArray.slice(72,75);
-  let tomato = legendasArray.slice(76,79);
-  let vegetais1 = legendasArray.slice(58, 68);
-  let vegetais2 = legendasArray.slice(75,76);
-  let vegetais3 = legendasArray.slice(79,80);
+  let vegetais = legendasArray.slice(58,80);
 
-  let frutasLists = [].concat(frutas1, frutas2);
+
   let milkLists = [].concat(milk1, milk2, milk3, milk4);
   let yoghurtLists = [].concat(yoghurt1, yoghurt2, yoghurt3);
-  let vegetaisLists = [].concat(vegetais1, vegetais2, vegetais3);
+
   // Sort the legendas_aux array by the first element of each subtitle string
-  apples.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  frutasLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  melons.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  frutas.sort((a, b) => a[0] > b[0] ? 1 : -1);
   juices.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  pepper.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  potato.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  tomato.sort((a, b) => a[0] > b[0] ? 1 : -1);
   cream.sort((a, b) => a[0] > b[0] ? 1 : -1);
   milkLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
-  vegetaisLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
+  vegetais.sort((a, b) => a[0] > b[0] ? 1 : -1);
   yoghurtLists.sort((a, b) => a[0] > b[0] ? 1 : -1);
 
 
-  listas = [].concat(apples, frutasLists, melons, juices, milkLists, yoghurtLists, cream, potato, pepper, tomato, vegetaisLists);
+  listas = [].concat(frutas, juices, milkLists, yoghurtLists, cream, vegetais);
 
   // Define the margins between targets by dividing the white space
   // for the number of targets minus one
