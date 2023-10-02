@@ -1,2 +1,3 @@
 # TargetPractice_IPM
- IPM Project, The Second
+
+Projeto para cadeira de Interação Pessoa Máquina
